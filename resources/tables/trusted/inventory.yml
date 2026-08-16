@@ -1,0 +1,60 @@
+name: inventory
+schema: trusted
+
+comment: Certified material inventory snapshots validated and conformed for reuse by downstream products.
+
+columns:
+  - name: inventory_snapshot_date
+    type: DATE
+    nullable: false
+    comment: Certified date for which the inventory snapshot applies.
+
+  - name: material_id
+    type: STRING
+    nullable: false
+    comment: Validated material identifier associated with the inventory record.
+
+  - name: plant_id
+    type: STRING
+    nullable: false
+    comment: Validated plant identifier associated with the inventory record.
+
+  - name: storage_location
+    type: STRING
+    nullable: true
+    comment: Conformed storage location within the plant.
+
+  - name: available_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Certified quantity available for use.
+
+  - name: blocked_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Certified quantity blocked or unavailable for use.
+
+  - name: in_transit_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Certified quantity currently in transit.
+
+  - name: unit_of_measure
+    type: STRING
+    nullable: true
+    comment: Conformed unit of measure associated with inventory quantities.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Authoritative source system associated with the inventory record.
+
+  - name: record_created_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the trusted record was first created.
+
+  - name: record_updated_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the trusted record was last updated.

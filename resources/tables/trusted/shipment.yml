@@ -1,0 +1,85 @@
+name: shipment
+schema: trusted
+
+comment: Certified shipment and delivery facts validated and conformed for reuse by downstream products.
+
+columns:
+  - name: shipment_id
+    type: STRING
+    nullable: false
+    comment: Conformed unique shipment identifier.
+
+  - name: purchase_order_id
+    type: STRING
+    nullable: true
+    comment: Validated purchase order identifier associated with the shipment.
+
+  - name: purchase_order_line
+    type: STRING
+    nullable: true
+    comment: Validated purchase order line associated with the shipment.
+
+  - name: material_id
+    type: STRING
+    nullable: false
+    comment: Validated material identifier associated with the shipment.
+
+  - name: supplier_id
+    type: STRING
+    nullable: false
+    comment: Validated supplier identifier associated with the shipment.
+
+  - name: plant_id
+    type: STRING
+    nullable: false
+    comment: Validated receiving plant or location identifier.
+
+  - name: shipment_date
+    type: DATE
+    nullable: true
+    comment: Certified date on which the shipment was dispatched.
+
+  - name: actual_delivery_date
+    type: DATE
+    nullable: true
+    comment: Certified date on which the shipment was delivered.
+
+  - name: shipped_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Certified shipped quantity.
+
+  - name: received_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Certified received quantity.
+
+  - name: shipment_status
+    type: STRING
+    nullable: true
+    comment: Conformed shipment status.
+
+  - name: carrier_name
+    type: STRING
+    nullable: true
+    comment: Conformed logistics carrier name.
+
+  - name: transport_mode
+    type: STRING
+    nullable: true
+    comment: Conformed transportation mode.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Authoritative source system associated with the shipment record.
+
+  - name: record_created_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the trusted record was first created.
+
+  - name: record_updated_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the trusted record was last updated.

@@ -1,0 +1,45 @@
+name: material
+schema: trusted
+
+comment: Certified and conformed material master data available for downstream products.
+
+columns:
+  - name: material_id
+    type: STRING
+    nullable: false
+    comment: Conformed unique identifier of the material.
+
+  - name: material_name
+    type: STRING
+    nullable: true
+    comment: Certified material name or description.
+
+  - name: material_type
+    type: STRING
+    nullable: true
+    comment: Conformed material type or category.
+
+  - name: unit_of_measure
+    type: STRING
+    nullable: true
+    comment: Conformed base unit of measure for the material.
+
+  - name: product_group
+    type: STRING
+    nullable: true
+    comment: Conformed product or material group.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Authoritative source system associated with the material record.
+
+  - name: record_created_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the trusted record was first created.
+
+  - name: record_updated_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the trusted record was last updated.

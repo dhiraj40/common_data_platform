@@ -1,0 +1,90 @@
+name: shipment
+schema: foundation
+
+comment: Standardized shipment and delivery data prepared from raw source records.
+
+columns:
+  - name: shipment_id
+    type: STRING
+    nullable: false
+    comment: Standardized unique shipment identifier.
+
+  - name: purchase_order_id
+    type: STRING
+    nullable: true
+    comment: Standardized purchase order identifier associated with the shipment.
+
+  - name: purchase_order_line
+    type: STRING
+    nullable: true
+    comment: Standardized purchase order line associated with the shipment.
+
+  - name: material_id
+    type: STRING
+    nullable: false
+    comment: Standardized material identifier associated with the shipment.
+
+  - name: supplier_id
+    type: STRING
+    nullable: false
+    comment: Standardized supplier identifier associated with the shipment.
+
+  - name: plant_id
+    type: STRING
+    nullable: false
+    comment: Standardized receiving plant or location identifier.
+
+  - name: shipment_date
+    type: DATE
+    nullable: true
+    comment: Standardized shipment dispatch date.
+
+  - name: actual_delivery_date
+    type: DATE
+    nullable: true
+    comment: Standardized actual delivery date.
+
+  - name: shipped_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Standardized shipped quantity.
+
+  - name: received_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Standardized received quantity.
+
+  - name: shipment_status
+    type: STRING
+    nullable: true
+    comment: Standardized shipment status.
+
+  - name: carrier_name
+    type: STRING
+    nullable: true
+    comment: Standardized logistics carrier name.
+
+  - name: transport_mode
+    type: STRING
+    nullable: true
+    comment: Standardized transportation mode.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Source system from which the shipment record originated.
+
+  - name: source_record_id
+    type: STRING
+    nullable: true
+    comment: Source-level identifier retained for traceability where applicable.
+
+  - name: record_created_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the standardized record was created in the foundation layer.
+
+  - name: record_updated_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the standardized record was last updated in the foundation layer.

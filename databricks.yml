@@ -1,0 +1,67 @@
+bundle:
+  name: common-data-platform
+
+include:
+  - resources/workflows/*.yml
+
+
+variables:
+  catalog_name:
+    description: Unity Catalog used by the Common Data Platform
+
+  job_timezone:
+    description: Timezone used by scheduled workflows
+    default: Asia/Kolkata
+
+  raw_daily_cron:
+    description: Schedule for daily Raw ingestion
+    default: "0 0 2 * * ?"
+
+  raw_4x_daily_cron:
+    description: Schedule for four-times-daily Raw ingestion
+    default: "0 0 0,6,12,18 * * ?"
+
+  workflow_pause_status:
+    description: Pause status for scheduled and triggered workflows
+    default: PAUSED
+
+  continuous_workflow_pause_status:
+    description: Pause status for continuous ingestion workflow
+    default: PAUSED
+
+
+targets:
+
+  dev:
+    default: true
+    mode: development
+
+    variables:
+      catalog_name: common_data_platform_dev
+
+      # Keep schedules paused during development.
+      workflow_pause_status: PAUSED
+      continuous_workflow_pause_status: PAUSED
+
+
+  uat:
+    mode: production
+
+    variables:
+      catalog_name: common_data_platform_uat
+
+      workflow_pause_status: PAUSED
+      continuous_workflow_pause_status: PAUSED
+
+
+  prod:
+    mode: production
+
+    variables:
+      catalog_name: common_data_platform_prod
+
+      workflow_pause_status: UNPAUSED
+
+      # File-arrival shipment ingestion will be used initially.
+      # Do not enable continuous ingestion at the same time.
+      continuous_workflow_pause_status: PAUSED

@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    raw_shipment_file_arrival:
+      name: common-data-platform-${bundle.target}-raw-shipment-file-arrival
+
+      parameters:
+        - name: environment
+          default: ${bundle.target}
+        - name: datasets
+          default: shipment
+        - name: continuous
+          default: "false"
+
+      trigger:
+        pause_status: ${var.workflow_pause_status}
+        file_arrival:
+          url: /Volumes/${var.catalog_name}/raw/source_files/shipment/
+          min_time_between_triggers_seconds: 60
+          wait_after_last_change_seconds: 60
+
+      tasks:
+        - task_key: raw_shipment_ingestion
+          notebook_task:
+            notebook_path: ../../notebooks/ingestion/01_raw_ingestion.ipynb

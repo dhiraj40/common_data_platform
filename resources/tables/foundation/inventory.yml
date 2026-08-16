@@ -1,0 +1,65 @@
+name: inventory
+schema: foundation
+
+comment: Standardized material inventory snapshot data prepared from raw source records.
+
+columns:
+  - name: inventory_snapshot_date
+    type: DATE
+    nullable: false
+    comment: Standardized date for which the inventory snapshot applies.
+
+  - name: material_id
+    type: STRING
+    nullable: false
+    comment: Standardized material identifier associated with the inventory record.
+
+  - name: plant_id
+    type: STRING
+    nullable: false
+    comment: Standardized plant identifier associated with the inventory record.
+
+  - name: storage_location
+    type: STRING
+    nullable: true
+    comment: Standardized storage location within the plant.
+
+  - name: available_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Standardized quantity currently available for use.
+
+  - name: blocked_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Standardized quantity currently blocked or unavailable for use.
+
+  - name: in_transit_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Standardized quantity currently in transit.
+
+  - name: unit_of_measure
+    type: STRING
+    nullable: true
+    comment: Standardized unit of measure associated with the inventory quantities.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Source system from which the inventory record originated.
+
+  - name: source_record_id
+    type: STRING
+    nullable: true
+    comment: Source-level identifier retained for traceability where applicable.
+
+  - name: record_created_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the standardized record was created in the foundation layer.
+
+  - name: record_updated_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the standardized record was last updated in the foundation layer.

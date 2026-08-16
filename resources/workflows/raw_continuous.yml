@@ -1,0 +1,21 @@
+resources:
+  jobs:
+    raw_continuous:
+      name: common-data-platform-${bundle.target}-raw-continuous
+
+      parameters:
+        - name: environment
+          default: ${bundle.target}
+        - name: datasets
+          default: shipment
+        - name: continuous
+          default: "true"
+
+      continuous:
+        pause_status: ${var.continuous_workflow_pause_status}
+        task_retry_mode: ON_FAILURE
+
+      tasks:
+        - task_key: raw_continuous_ingestion
+          notebook_task:
+            notebook_path: ../../notebooks/ingestion/01_raw_ingestion.ipynb

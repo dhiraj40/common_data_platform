@@ -1,0 +1,50 @@
+name: material
+schema: raw
+
+comment: Raw material master data received from source systems.
+
+columns:
+  - name: material_id
+    type: STRING
+    nullable: true
+    comment: Material identifier exactly as received from the source.
+
+  - name: material_name
+    type: STRING
+    nullable: true
+    comment: Material name or description exactly as received from the source.
+
+  - name: material_type
+    type: STRING
+    nullable: true
+    comment: Material type or category exactly as received from the source.
+
+  - name: unit_of_measure
+    type: STRING
+    nullable: true
+    comment: Unit of measure exactly as received from the source.
+
+  - name: product_group
+    type: STRING
+    nullable: true
+    comment: Product or material group exactly as received from the source.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Source system from which the record was ingested.
+
+  - name: source_file
+    type: STRING
+    nullable: true
+    comment: Full source file path from which the record was ingested.
+
+  - name: ingestion_batch_id
+    type: STRING
+    nullable: false
+    comment: Unique identifier assigned to the ingestion run.
+
+  - name: ingestion_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the record was ingested into the raw layer.

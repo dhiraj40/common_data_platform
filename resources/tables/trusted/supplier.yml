@@ -1,0 +1,50 @@
+name: supplier
+schema: trusted
+
+comment: Certified and conformed supplier master data available for downstream products.
+
+columns:
+  - name: supplier_id
+    type: STRING
+    nullable: false
+    comment: Conformed unique identifier of the supplier.
+
+  - name: supplier_name
+    type: STRING
+    nullable: true
+    comment: Certified supplier name.
+
+  - name: supplier_type
+    type: STRING
+    nullable: true
+    comment: Conformed supplier type or classification.
+
+  - name: city
+    type: STRING
+    nullable: true
+    comment: Conformed city associated with the supplier.
+
+  - name: state
+    type: STRING
+    nullable: true
+    comment: Conformed state or administrative region associated with the supplier.
+
+  - name: country
+    type: STRING
+    nullable: true
+    comment: Conformed country associated with the supplier.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Authoritative source system associated with the supplier record.
+
+  - name: record_created_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the trusted record was first created.
+
+  - name: record_updated_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the trusted record was last updated.

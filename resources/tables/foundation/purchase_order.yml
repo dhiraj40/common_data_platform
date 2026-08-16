@@ -1,0 +1,80 @@
+name: purchase_order
+schema: foundation
+
+comment: Standardized purchase order data prepared from raw source records.
+
+columns:
+  - name: purchase_order_id
+    type: STRING
+    nullable: false
+    comment: Standardized purchase order identifier.
+
+  - name: purchase_order_line
+    type: STRING
+    nullable: false
+    comment: Standardized purchase order line identifier.
+
+  - name: material_id
+    type: STRING
+    nullable: false
+    comment: Standardized material identifier referenced by the purchase order line.
+
+  - name: supplier_id
+    type: STRING
+    nullable: false
+    comment: Standardized supplier identifier referenced by the purchase order.
+
+  - name: plant_id
+    type: STRING
+    nullable: false
+    comment: Standardized plant or receiving location identifier.
+
+  - name: order_date
+    type: DATE
+    nullable: true
+    comment: Standardized purchase order creation date.
+
+  - name: requested_delivery_date
+    type: DATE
+    nullable: true
+    comment: Standardized requested delivery date.
+
+  - name: order_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Standardized ordered quantity for the purchase order line.
+
+  - name: unit_of_measure
+    type: STRING
+    nullable: true
+    comment: Standardized unit of measure for the ordered quantity.
+
+  - name: order_status
+    type: STRING
+    nullable: true
+    comment: Standardized purchase order status.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Source system from which the purchase order record originated.
+
+  - name: source_record_id
+    type: STRING
+    nullable: true
+    comment: Source-level identifier retained for traceability where applicable.
+
+  - name: source_updated_timestamp
+    type: STRING
+    nullable: true
+    comment: Source-level identifier retained for traceability where applicable.
+
+  - name: record_created_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the standardized record was created in the foundation layer.
+
+  - name: record_updated_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the standardized record was last updated in the foundation layer.

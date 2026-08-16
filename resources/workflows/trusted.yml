@@ -1,0 +1,73 @@
+resources:
+  jobs:
+
+    trusted_job:
+      name: ${bundle.target}-common-data-platform-trusted
+
+      parameters:
+        - name: environment
+          default: ${bundle.target}
+
+      tasks:
+
+        # ------------------------------------
+        # Master / reference entities
+        # ------------------------------------
+
+        - task_key: material
+          notebook_task:
+            notebook_path: ../../notebooks/trusted/material.ipynb
+
+        - task_key: plant
+          notebook_task:
+            notebook_path: ../../notebooks/trusted/plant.ipynb
+
+        - task_key: supplier
+          notebook_task:
+            notebook_path: ../../notebooks/trusted/supplier.ipynb
+
+
+        # ------------------------------------
+        # Purchase Order
+        # Requires certified master entities
+        # ------------------------------------
+
+        - task_key: purchase_order
+
+          depends_on:
+            - task_key: material
+            - task_key: plant
+            - task_key: supplier
+
+          notebook_task:
+            notebook_path: ../../notebooks/trusted/purchase_order.ipynb
+
+
+        # ------------------------------------
+        # Shipment
+        # Requires certified PO
+        # PO already depends on all 3 masters
+        # ------------------------------------
+
+        - task_key: shipment
+
+          depends_on:
+            - task_key: purchase_order
+
+          notebook_task:
+            notebook_path: ../../notebooks/trusted/shipment.ipynb
+
+
+        # ------------------------------------
+        # Inventory
+        # Requires Material + Plant
+        # ------------------------------------
+
+        - task_key: inventory
+
+          depends_on:
+            - task_key: material
+            - task_key: plant
+
+          notebook_task:
+            notebook_path: ../../notebooks/trusted/inventory.ipynb

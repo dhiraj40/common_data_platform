@@ -1,0 +1,18 @@
+name: inventory
+
+source:
+  type: file
+  format: csv
+  path: inventory/
+  header: true
+  delimiter: ","
+
+target:
+  schema: raw
+  table: inventory
+
+load:
+  mode: append
+
+metadata:
+  source_system: sap

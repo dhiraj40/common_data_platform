@@ -1,0 +1,35 @@
+resources:
+  jobs:
+
+    foundation_job:
+      name: ${bundle.target}-common-data-platform-foundation
+
+      parameters:
+        - name: environment
+          default: ${bundle.target}
+
+      tasks:
+
+        - task_key: material
+          notebook_task:
+            notebook_path: ../../notebooks/foundation/material.ipynb
+
+        - task_key: plant
+          notebook_task:
+            notebook_path: ../../notebooks/foundation/plant.ipynb
+
+        - task_key: supplier
+          notebook_task:
+            notebook_path: ../../notebooks/foundation/supplier.ipynb
+
+        - task_key: purchase_order
+          notebook_task:
+            notebook_path: ../../notebooks/foundation/purchase_order.ipynb
+
+        - task_key: shipment
+          notebook_task:
+            notebook_path: ../../notebooks/foundation/shipment.ipynb
+
+        - task_key: inventory
+          notebook_task:
+            notebook_path: ../../notebooks/foundation/inventory.ipynb

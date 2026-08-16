@@ -1,0 +1,75 @@
+name: purchase_order
+schema: raw
+
+comment: Raw purchase order data received from source systems.
+
+columns:
+  - name: purchase_order_id
+    type: STRING
+    nullable: true
+    comment: Purchase order identifier exactly as received from the source.
+
+  - name: purchase_order_line
+    type: STRING
+    nullable: true
+    comment: Purchase order line identifier exactly as received from the source.
+
+  - name: material_id
+    type: STRING
+    nullable: true
+    comment: Material identifier referenced by the purchase order line.
+
+  - name: supplier_id
+    type: STRING
+    nullable: true
+    comment: Supplier identifier referenced by the purchase order.
+
+  - name: plant_id
+    type: STRING
+    nullable: true
+    comment: Receiving plant or location identifier referenced by the purchase order.
+
+  - name: order_date
+    type: DATE
+    nullable: true
+    comment: Purchase order creation date exactly as received from the source.
+
+  - name: requested_delivery_date
+    type: DATE
+    nullable: true
+    comment: Requested delivery date exactly as received from the source.
+
+  - name: order_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Ordered quantity exactly as received from the source.
+
+  - name: unit_of_measure
+    type: STRING
+    nullable: true
+    comment: Unit of measure associated with the ordered quantity.
+
+  - name: order_status
+    type: STRING
+    nullable: true
+    comment: Purchase order status exactly as received from the source.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Source system from which the record was ingested.
+
+  - name: source_file
+    type: STRING
+    nullable: true
+    comment: Full source file path from which the record was ingested.
+
+  - name: ingestion_batch_id
+    type: STRING
+    nullable: false
+    comment: Unique identifier assigned to the ingestion run.
+
+  - name: ingestion_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the record was ingested into the raw layer.

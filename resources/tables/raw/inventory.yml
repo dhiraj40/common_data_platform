@@ -1,0 +1,65 @@
+name: inventory
+schema: raw
+
+comment: Raw material inventory snapshot data received from source systems.
+
+columns:
+  - name: inventory_snapshot_date
+    type: DATE
+    nullable: true
+    comment: Inventory snapshot date exactly as received from the source.
+
+  - name: material_id
+    type: STRING
+    nullable: true
+    comment: Material identifier associated with the inventory record.
+
+  - name: plant_id
+    type: STRING
+    nullable: true
+    comment: Plant identifier associated with the inventory record.
+
+  - name: storage_location
+    type: STRING
+    nullable: true
+    comment: Storage location exactly as received from the source.
+
+  - name: available_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Available inventory quantity exactly as received from the source.
+
+  - name: blocked_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: Blocked inventory quantity exactly as received from the source.
+
+  - name: in_transit_quantity
+    type: DECIMAL(18,4)
+    nullable: true
+    comment: In-transit inventory quantity exactly as received from the source.
+
+  - name: unit_of_measure
+    type: STRING
+    nullable: true
+    comment: Unit of measure associated with the inventory quantities.
+
+  - name: source_system
+    type: STRING
+    nullable: false
+    comment: Source system from which the record was ingested.
+
+  - name: source_file
+    type: STRING
+    nullable: true
+    comment: Full source file path from which the record was ingested.
+
+  - name: ingestion_batch_id
+    type: STRING
+    nullable: false
+    comment: Unique identifier assigned to the ingestion run.
+
+  - name: ingestion_timestamp
+    type: TIMESTAMP
+    nullable: false
+    comment: Timestamp when the record was ingested into the raw layer.

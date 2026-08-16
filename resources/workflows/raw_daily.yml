@@ -1,0 +1,22 @@
+resources:
+  jobs:
+    raw_daily:
+      name: common-data-platform-${bundle.target}-raw-daily
+
+      parameters:
+        - name: environment
+          default: ${bundle.target}
+        - name: datasets
+          default: material,plant,supplier
+        - name: continuous
+          default: "false"
+
+      schedule:
+        quartz_cron_expression: ${var.raw_daily_cron}
+        timezone_id: ${var.job_timezone}
+        pause_status: ${var.workflow_pause_status}
+
+      tasks:
+        - task_key: raw_daily_ingestion
+          notebook_task:
+            notebook_path: ../../notebooks/ingestion/01_raw_ingestion.ipynb
